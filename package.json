@@ -5,7 +5,8 @@
   "author": "Roman Sakh <roman.sakh@ukma.edu.ua>",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "lint": "eslint . "
   },
   "dependencies": {
     "@microsoft/eslint-formatter-sarif": "^2.1.7",
