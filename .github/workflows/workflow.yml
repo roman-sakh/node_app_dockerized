@@ -60,3 +60,13 @@ jobs:
           username: ${{ secrets.GITLAB_USERNAME }}
           password: ${{ secrets.GITLAB_TOKEN }}
 
+      - run: docker push registry.gitlab.com/gribochechek/node_app_dockerized
+        if: success()
+
+      - name: Pull & Run
+        run: |
+            docker pull registry.gitlab.com/gribochechek/node_app_dockerized
+            docker run --memory=512m --cpus="1" -p 80:3000 -d --rm  registry.gitlab.com/gribochechek/node_app_dockerized
+            sleep 5
+            curl -i localhost:80
+
