@@ -8,7 +8,10 @@
     "start": "node server.js"
   },
   "dependencies": {
-    "eslint": "^8.36.0",
+    "@microsoft/eslint-formatter-sarif": "^2.1.7",
     "express": "^4.16.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.36.0"
   }
 }
