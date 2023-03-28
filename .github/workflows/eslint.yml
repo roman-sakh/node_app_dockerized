@@ -48,3 +48,7 @@ jobs:
         with:
           sarif_file: eslint-results.sarif
           wait-for-processing: true
+          
+      - name: Build the Docker image
+        run: docker build . --file Dockerfile --tag registry.gitlab.com/gribochechek/node_app_dockerized
+        if: success()
