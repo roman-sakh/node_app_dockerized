@@ -7,7 +7,7 @@
 # More details at https://github.com/eslint/eslint
 # and https://eslint.org
 
-name: ESLint
+name: Basic Workflow
 
 on:
   push:
@@ -19,8 +19,8 @@ on:
     - cron: '36 8 * * 5'
 
 jobs:
-  eslint:
-    name: Run eslint scanning
+  workflow:
+    name: Run complete workflow
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -52,3 +52,11 @@ jobs:
       - name: Build the Docker image
         run: docker build . --file Dockerfile --tag registry.gitlab.com/gribochechek/node_app_dockerized
         if: success()
+
+      - name: Login to GitLab
+        uses: docker/login-action@v2
+        with:
+          registry: registry.gitlab.com
+          username: ${{ secrets.GITLAB_USERNAME }}
+          password: ${{ secrets.GITLAB_TOKEN }}
+
